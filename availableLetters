@@ -1,0 +1,9 @@
+#getavailableletters function 
+def getavailableletters(lettersguessed):
+    import string
+    x = string.ascii_lowercase
+    available = []
+    for y in x:
+        if y not in lettersguessed:
+            available.append(y)
+    return "".join(available)
