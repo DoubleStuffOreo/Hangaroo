@@ -5,16 +5,17 @@ def iswordguessed(secretword, lettersguessed):
             return False
     return True
 
-
+#getGuessed function 
 def getguessedword(secretword, lettersguessed):
     words = []
     for x in secretword:
         if x in lettersguessed:
             words.append(x)
         else:
-            words.append(" _ ")
+            words.append(" __ ")
     return "".join(words)
 
+#getavailableletters function 
 def getavailableletters(lettersguessed):
     import string
     x = string.ascii_lowercase
@@ -24,7 +25,8 @@ def getavailableletters(lettersguessed):
             available.append(y)
     return "".join(available)
 
-def Hangaroo(secretword):
+#hangaroo function
+def hangaroo(secretword):
     print("H A N G A R O O !")
     print("The word you have to guess has ", len(secretword)," letters.")
     chancesleft = len(secretword) + 3
@@ -35,7 +37,7 @@ def Hangaroo(secretword):
         if iswordguessed(secretword, lettersguessed):
             return print("Congratulations! \n ")
             break
-        print("Chances left: ", chancesleft)
+        print("X: ", chancesleft)
         print("Letters Guessed: ", lettersguessed)
         print("Available letters: ", getavailableletters(lettersguessed))
         letter = str(input("Enter letter: ")).lower()
@@ -50,4 +52,4 @@ def Hangaroo(secretword):
         else:
             print("Nice try, Einstein. \n" , getguessedword(secretword,lettersguessed))
             
-    return print("I am so dead! \n The word is", secretword,"\n Mistakes Made: ", fail)
+    return print("I am so dead! \n The word is", secretword,"\n Mistakes Committed: ", fail)
