@@ -1,0 +1,53 @@
+#iswordguessed function
+def iswordguessed(secretword, lettersguessed):
+    for x in secretword:
+        if x not in lettersguessed:
+            return False
+    return True
+
+
+def getguessedword(secretword, lettersguessed):
+    words = []
+    for x in secretword:
+        if x in lettersguessed:
+            words.append(x)
+        else:
+            words.append(" _ ")
+    return "".join(words)
+
+def getavailableletters(lettersguessed):
+    import string
+    x = string.ascii_lowercase
+    available = []
+    for y in x:
+        if y not in lettersguessed:
+            available.append(y)
+    return "".join(available)
+
+def Hangaroo(secretword):
+    print("H A N G A R O O !")
+    print("The word you have to guess has ", len(secretword)," letters.")
+    chancesleft = len(secretword) + 3
+    fail = 0
+    lettersguessed = []
+    
+    while chancesleft > 0:
+        if iswordguessed(secretword, lettersguessed):
+            return print("Congratulations! \n ")
+            break
+        print("Chances left: ", chancesleft)
+        print("Letters Guessed: ", lettersguessed)
+        print("Available letters: ", getavailableletters(lettersguessed))
+        letter = str(input("Enter letter: ")).lower()
+        if letter not in lettersguessed:
+            lettersguessed.append(letter)
+            if letter in secretword:
+                print("Oh yeah \n" , getguessedword(secretword,lettersguessed))
+            else:
+                print("Wrong! Try again. \n" , getguessedword(secretword,lettersguessed))
+                chancesleft -=1
+                fail +=1
+        else:
+            print("Nice try, Einstein. \n" , getguessedword(secretword,lettersguessed))
+            
+    return print("I am so dead! \n The word is", secretword,"\n Mistakes Made: ", fail)
