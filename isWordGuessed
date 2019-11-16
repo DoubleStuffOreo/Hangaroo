@@ -1,0 +1,6 @@
+#iswordguessed function
+def iswordguessed(secretword, lettersguessed):
+    for x in secretword:
+        if x not in lettersguessed:
+            return False
+    return True
